@@ -39,16 +39,46 @@ const Register = () => {
     terms: false,
     news: false
   });
-  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    Object.values(values).includes("")
-      ? setSubmitDisabled(true)
-      : setSubmitDisabled(false);
-  }, [values]);
+  //   useEffect(() => {
+  //     Object.values(values).includes("") || values.terms == false
+  //       ? setSubmitDisabled(true)
+  //       : setSubmitDisabled(false);
+  //   }, [values]);
+
+  const validate = () => {
+    const errors = {};
+    Object.keys(values).forEach(key => {
+      switch (typeof values[key]) {
+        case "string":
+          if (values[key].length === 0) {
+            errors[key] = `${key} is required`;
+            break;
+          }
+          if (values[key].length < 2) {
+            errors[key] = `${key} should be longer than 2`;
+            break;
+          } else if (values[key].length > 12) {
+            errors[key] = `${key} should be less than 12`;
+            break;
+          }
+        case "boolean":
+          if (values[key] === false) {
+            errors[key] = `agree pls`;
+          }
+        default:
+          break;
+      }
+    });
+    if (errors.hasOwnProperty("news")) {
+      delete errors.news;
+    }
+    return errors;
+  };
 
   const handleInput = ({ target: { name, value } }, type) => {
-    // setValues(Object.assign({}, { ...values }, { [name]: value }));
     switch (type) {
       case "text":
         setValues(Object.assign({}, { ...values }, { [name]: value }));
@@ -60,13 +90,18 @@ const Register = () => {
         return;
     }
   };
+  const submit = e => {
+    e.preventDefault();
+    console.log("submit");
+    console.log(validate());
+  };
 
   const classes = styles();
   return (
     <ThemeProvider theme={registerTheme}>
       <Box className={classes.container} p="2rem 2rem 4rem 2rem">
         <Typography className={classes.title}>Sign up</Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={submit}>
           <Grid container spacing={2} justify="center">
             <Grid item sm={6} xs={12}>
               <Input
@@ -180,6 +215,7 @@ const Register = () => {
             <Grid item mt={4}>
               <Box mt={2}>
                 <Button
+                  type="submit"
                   fullWidth
                   className={classes.button}
                   variant="contained"
