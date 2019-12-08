@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Register from "./components/Register";
+import Users from "./components/Users";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
+import theme from "./theme";
+import { Box } from "@material-ui/core";
 
-function App() {
+const styles = makeStyles({
+  container: {
+    maxWidth: 1024,
+    margin: "auto",
+    minHeight: "inherit"
+    // display: "flex"
+  }
+});
+
+const App = () => {
+  const classes = styles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Provider store={store}>
+      <div
+        className="App"
+        style={{ minHeight: "100vh", backgroundColor: "#ecf6fe" }}
+      >
+        <Box
+          component="div"
+          display="flex"
+          className={classes.container}
+          alignItems="center"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Router>
+              <Switch>
+                <Route exact path={"/"} component={Register} />
+                <Route exact path={"/app"} component={Users} />
+              </Switch>
+            </Router>
+          </ThemeProvider>
+        </Box>
+      </div>
+    </Provider>
   );
-}
+};
 
 export default App;
