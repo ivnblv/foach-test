@@ -28,25 +28,7 @@ const userTheme = theme =>
       ...theme.palette
     },
     overrides: {
-      ...theme.overrides,
-      MuiSwitch: {
-        switchBase: {
-          color: "#979797",
-          "&$checked": {
-            "& + $track": {
-              backgroundColor: "#ECF6FE !important"
-            }
-          }
-        },
-        thumb: {
-          width: "18px",
-          height: "18px"
-        },
-        checked: {},
-        track: {
-          backgroundColor: "rgba(151, 151, 151, 0.3)"
-        }
-      }
+      ...theme.overrides
     }
   });
 
@@ -68,7 +50,7 @@ const User = ({ id, name, position, onVacation, changeUserVacation }) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box display="flex-column" pt="1.5rem" pb="2rem" pl="2rem">
+          <Box display="flex-column" pt="1rem" pb="1rem" pl="2rem">
             <Box mb="1.5rem">
               <Typography variant="h2" className={classes.textPrimary}>
                 {name}
@@ -97,7 +79,8 @@ const User = ({ id, name, position, onVacation, changeUserVacation }) => {
                   <Switch
                     checked={onVacation}
                     onChange={() => changeUserVacation(id)}
-                    color="primary"
+                    value={onVacation}
+                    color="default"
                   />
                 }
               />

@@ -6,15 +6,9 @@ const styles = makeStyles({
     backgroundColor: "#fff",
     padding: "1rem",
     margin: "auto",
-    marginBottom: "2rem",
-    border: "2px solid #1EAAFC",
+    marginBottom: "1rem",
+    border: "1px solid #1EAAFC",
     borderRadius: "8px"
-  },
-  text: {
-    color: "#747474",
-    fontSize: 30,
-    letterSpacing: "0.75px",
-    lineHeight: "36px"
   },
   textPrimary: {
     color: "#747474"
@@ -26,19 +20,6 @@ const styles = makeStyles({
     backgroundColor: "#E0E0E0",
     height: "auto",
     width: "150px"
-  },
-  switch: {
-    color: "#747474",
-    fontSize: 16,
-    lineHeight: "16px",
-    letterSpacing: "0.4px",
-    paddingBottom: "5px"
-  },
-  switchChecked: {
-    color: "#1EAAFC !important",
-    fontSize: 16,
-    lineHeight: "16px",
-    letterSpacing: "0.4px"
   },
   label: {
     fontSize: 16,

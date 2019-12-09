@@ -30,10 +30,30 @@ const theme = createMuiTheme({
     },
     MuiCheckbox: {
       root: {
-        color: " #C2C2C2",
-        borderRadius: 0,
-        marginBottom: "3px",
-        paddingTop: 0
+        color: " #C2C2C2"
+      }
+    },
+    MuiSwitch: {
+      switchBase: {
+        color: "#979797",
+        "&$checked ": {
+          color: "#1EAAFC",
+          "& + $track": {
+            backgroundColor: "#ECF6FE",
+            opacity: 1
+          }
+        }
+      },
+      thumb: {
+        width: "18px",
+        height: "18px"
+      },
+      checked: {},
+      track: {
+        width: "32px",
+        backgroundColor: "rgba(151, 151, 151, 0.3)",
+        opacity: 1,
+        borderRadius: "5px"
       }
     }
   }
