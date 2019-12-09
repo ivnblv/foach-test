@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-const Input = ({ label, className, value, name, handleInput, error }) => (
+const FormInput = ({ label, className, value, name, handleInput, error }) => (
   <TextField
     fullWidth
     name={name}
@@ -14,4 +14,4 @@ const Input = ({ label, className, value, name, handleInput, error }) => (
     helperText={error}
   />
 );
-export default Input;
+export default FormInput;

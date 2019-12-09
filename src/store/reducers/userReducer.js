@@ -27,7 +27,13 @@ export default function(state = initialState, { type, payload }) {
   switch (type) {
     case SWITCH_USER_VACATION:
       return {
-        ...state
+        ...state,
+        users: Object.assign({}, state.users, {
+          [payload]: {
+            ...state.users[payload],
+            onVacation: !state.users[payload].onVacation
+          }
+        })
       };
 
     default:

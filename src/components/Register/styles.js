@@ -11,7 +11,7 @@ const styles = makeStyles({
     lineHeight: "33px",
     fontWeight: "bold",
     fontStyle: "normal",
-    marginBottom: "2rem"
+    marginBottom: "1rem"
   },
   button: {
     fontSize: 14,
@@ -28,6 +28,10 @@ const styles = makeStyles({
   label: {
     lineHeight: "20px",
     color: "#212322"
+  },
+  error: {
+    position: "absolute",
+    bottom: "-0.9rem"
   }
 });
 

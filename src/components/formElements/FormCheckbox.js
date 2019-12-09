@@ -22,7 +22,11 @@ const FormCheckbox = ({
       control={<Checkbox value={value} color="primary" />}
       label={<Typography className={className}>{label}</Typography>}
     />
-    {error ? <FormHelperText>{error}</FormHelperText> : null}
+    {error ? (
+      <FormHelperText style={{ position: "absolute", bottom: "-0.9rem" }}>
+        {error}
+      </FormHelperText>
+    ) : null}
   </FormControl>
 );
 

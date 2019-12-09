@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Grid, Box, Button, Link } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Input from "../formElements/Input";
+import FormInput from "../formElements/FormInput";
 import FormCheckbox from "../formElements/FormCheckbox";
 import FormSelect from "../formElements/FormSelect";
 import styles from "./styles";
@@ -52,10 +52,10 @@ const Register = () => {
   const handleInput = ({ target: { name, value } }, type) => {
     switch (type) {
       case "text":
-        setValues(Object.assign({}, { ...values }, { [name]: value }));
+        setValues(Object.assign({}, values, { [name]: value }));
         break;
       case "bool":
-        setValues(Object.assign({}, { ...values }, { [name]: !values[name] }));
+        setValues(Object.assign({}, values, { [name]: !values[name] }));
         break;
       default:
         return;
@@ -76,12 +76,12 @@ const Register = () => {
   const classes = styles();
   return (
     <ThemeProvider theme={registerTheme}>
-      <Box className={classes.container} p="2rem 2rem 4rem 2rem">
+      <Box className={classes.container} p="2rem 2rem 3rem 2rem">
         <Typography className={classes.title}>Sign up</Typography>
         <form className={classes.form} onSubmit={submit}>
           <Grid container spacing={2} justify="center">
             <Grid item sm={6} xs={12}>
-              <Input
+              <FormInput
                 label="First Name"
                 className={classes.input}
                 name="firstName"
@@ -91,7 +91,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <Input
+              <FormInput
                 label="Last Name"
                 className={classes.input}
                 name="lastName"
@@ -101,7 +101,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <Input
+              <FormInput
                 label="Phone Number"
                 className={classes.input}
                 name="phone"
@@ -122,7 +122,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Input
+              <FormInput
                 label="Email Address"
                 className={classes.input}
                 name="email"
@@ -132,7 +132,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Input
+              <FormInput
                 label="Confirm Email Address"
                 className={classes.input}
                 name="confirmEmail"
@@ -142,7 +142,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Input
+              <FormInput
                 label="Password"
                 className={classes.input}
                 name="password"
@@ -152,7 +152,7 @@ const Register = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Input
+              <FormInput
                 label="Confirm Password"
                 className={classes.input}
                 name="confirmPassword"
