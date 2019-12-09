@@ -24,8 +24,8 @@ const FormSelect = ({
     error={!!error}
     helperText={error}
   >
-    {options.map(option => (
-      <MenuItem key={options} value={option}>
+    {options.map((option, i) => (
+      <MenuItem key={name + i} value={option}>
         {option}
       </MenuItem>
     ))}

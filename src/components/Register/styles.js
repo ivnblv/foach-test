@@ -11,10 +11,14 @@ const styles = makeStyles({
     lineHeight: "33px",
     fontWeight: "bold",
     fontStyle: "normal",
-    marginBottom: "1rem"
+    marginBottom: "1rem",
+    color: "#161616"
   },
   inlineLink: {
-    margin: "0 .3rem"
+    margin: "0 .3rem",
+    fontWeight: "bold",
+    fontSize: "14px",
+    lineHeight: "17px"
   },
   button: {
     fontSize: 14,
@@ -27,7 +31,13 @@ const styles = makeStyles({
   },
   input: {
     lineHeight: "17px",
-    fontSize: 14
+    fontSize: 14,
+    borderRadius: 0,
+    color: "#161616"
+  },
+  checkboxes: {
+    lineHeight: "20px",
+    color: "#212322"
   },
   label: {
     lineHeight: "20px",

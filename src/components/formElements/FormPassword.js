@@ -25,7 +25,7 @@ const FormPassword = ({
         variant="outlined"
         style={{
           backgroundColor: "#fff",
-          padding: "0 .5rem"
+          padding: "0 .1rem"
         }}
       >
         {label}

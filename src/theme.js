@@ -20,6 +20,13 @@ const theme = createMuiTheme({
           paddingLeft: ".3rem"
         }
       }
+    },
+    MuiFormLabel: {
+      root: {
+        fontSize: "14px",
+        color: "#C2C2C2",
+        lineHeight: "17px"
+      }
     }
   }
 });
