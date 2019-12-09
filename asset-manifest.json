@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/foach-test/static/js/main.883652b0.chunk.js",
-    "main.js.map": "/foach-test/static/js/main.883652b0.chunk.js.map",
+    "main.js": "/foach-test/static/js/main.b30bbe66.chunk.js",
+    "main.js.map": "/foach-test/static/js/main.b30bbe66.chunk.js.map",
     "runtime-main.js": "/foach-test/static/js/runtime-main.ecb4027b.js",
     "runtime-main.js.map": "/foach-test/static/js/runtime-main.ecb4027b.js.map",
     "static/css/2.d5645790.chunk.css": "/foach-test/static/css/2.d5645790.chunk.css",
     "static/js/2.e589b181.chunk.js": "/foach-test/static/js/2.e589b181.chunk.js",
     "static/js/2.e589b181.chunk.js.map": "/foach-test/static/js/2.e589b181.chunk.js.map",
     "index.html": "/foach-test/index.html",
-    "precache-manifest.b9f0635c0a89d744577a2cf9441105e9.js": "/foach-test/precache-manifest.b9f0635c0a89d744577a2cf9441105e9.js",
+    "precache-manifest.63e4cc1c1b7684c4549f9c3b0f3dcfa0.js": "/foach-test/precache-manifest.63e4cc1c1b7684c4549f9c3b0f3dcfa0.js",
     "service-worker.js": "/foach-test/service-worker.js",
     "static/css/2.d5645790.chunk.css.map": "/foach-test/static/css/2.d5645790.chunk.css.map",
     "static/js/2.e589b181.chunk.js.LICENSE": "/foach-test/static/js/2.e589b181.chunk.js.LICENSE",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.ecb4027b.js",
     "static/css/2.d5645790.chunk.css",
     "static/js/2.e589b181.chunk.js",
-    "static/js/main.883652b0.chunk.js"
+    "static/js/main.b30bbe66.chunk.js"
   ]
 }
