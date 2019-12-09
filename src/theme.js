@@ -27,6 +27,14 @@ const theme = createMuiTheme({
         color: "#C2C2C2",
         lineHeight: "17px"
       }
+    },
+    MuiCheckbox: {
+      root: {
+        color: " #C2C2C2",
+        borderRadius: 0,
+        marginBottom: "3px",
+        paddingTop: 0
+      }
     }
   }
 });

@@ -54,7 +54,7 @@ const User = ({ id, name, position, onVacation, changeUserVacation }) => {
   const classes = styles();
   return (
     <ThemeProvider theme={userTheme}>
-      <Grid container className={classes.container} spacing={2}>
+      <Grid container className={classes.container}>
         <Grid item xs={12} sm={3}>
           <Box
             display="flex"
@@ -68,7 +68,7 @@ const User = ({ id, name, position, onVacation, changeUserVacation }) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box display="flex-column" pt="1.5rem" pb="2rem">
+          <Box display="flex-column" pt="1.5rem" pb="2rem" pl="2rem">
             <Box mb="1.5rem">
               <Typography variant="h2" className={classes.textPrimary}>
                 {name}
@@ -88,7 +88,11 @@ const User = ({ id, name, position, onVacation, changeUserVacation }) => {
               <FormControlLabel
                 label="On vacation"
                 labelPlacement="end"
-                className={classes.switch}
+                classes={{
+                  label: onVacation
+                    ? `${classes.label} ${classes.labelChecked}`
+                    : classes.label
+                }}
                 control={
                   <Switch
                     checked={onVacation}
