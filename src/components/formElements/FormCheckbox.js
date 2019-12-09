@@ -1,13 +1,29 @@
 import React from "react";
-import { FormControlLabel, Typography, Checkbox } from "@material-ui/core";
+import {
+  FormControl,
+  FormControlLabel,
+  Typography,
+  Checkbox,
+  FormHelperText
+} from "@material-ui/core";
 
-const FormCheckbox = ({ name, value, label, className, handleCheckbox }) => (
-  <FormControlLabel
-    name={name}
-    onChange={e => handleCheckbox(e, "bool")}
-    control={<Checkbox value={value} color="primary" />}
-    label={<Typography className={className}>{label}</Typography>}
-  />
+const FormCheckbox = ({
+  name,
+  value,
+  label,
+  className,
+  handleCheckbox,
+  error
+}) => (
+  <FormControl error={!!error}>
+    <FormControlLabel
+      name={name}
+      onChange={e => handleCheckbox(e, "bool")}
+      control={<Checkbox value={value} color="primary" />}
+      label={<Typography className={className}>{label}</Typography>}
+    />
+    {error ? <FormHelperText>{error}</FormHelperText> : null}
+  </FormControl>
 );
 
 export default FormCheckbox;

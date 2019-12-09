@@ -5,6 +5,7 @@ import Input from "../formElements/Input";
 import FormCheckbox from "../formElements/FormCheckbox";
 import FormSelect from "../formElements/FormSelect";
 import styles from "./styles";
+import { validate } from "../../utility/validation";
 
 const registerTheme = theme =>
   createMuiTheme({
@@ -28,7 +29,7 @@ const registerTheme = theme =>
 
 const Register = () => {
   const [values, setValues] = useState({
-    firstName: "123",
+    firstName: "",
     lastName: "",
     phone: "",
     amount: "",
@@ -48,36 +49,6 @@ const Register = () => {
   //       : setSubmitDisabled(false);
   //   }, [values]);
 
-  const validate = () => {
-    const errors = {};
-    Object.keys(values).forEach(key => {
-      switch (typeof values[key]) {
-        case "string":
-          if (values[key].length === 0) {
-            errors[key] = `${key} is required`;
-            break;
-          }
-          if (values[key].length < 2) {
-            errors[key] = `${key} should be longer than 2`;
-            break;
-          } else if (values[key].length > 12) {
-            errors[key] = `${key} should be less than 12`;
-            break;
-          }
-        case "boolean":
-          if (values[key] === false) {
-            errors[key] = `agree pls`;
-          }
-        default:
-          break;
-      }
-    });
-    if (errors.hasOwnProperty("news")) {
-      delete errors.news;
-    }
-    return errors;
-  };
-
   const handleInput = ({ target: { name, value } }, type) => {
     switch (type) {
       case "text":
@@ -92,8 +63,14 @@ const Register = () => {
   };
   const submit = e => {
     e.preventDefault();
-    console.log("submit");
-    console.log(validate());
+    const result = validate(
+      values,
+      ["news"],
+      ["phone", "email", "confirmEmail", "password", "confirmPassword"]
+    );
+    if (Object.keys(result).length === 0) {
+      console.log("profit");
+    } else setErrors(result);
   };
 
   const classes = styles();
@@ -110,6 +87,7 @@ const Register = () => {
                 name="firstName"
                 value={values.firstName}
                 handleInput={handleInput}
+                error={errors.firstName}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -119,6 +97,7 @@ const Register = () => {
                 name="lastName"
                 value={values.lastName}
                 handleInput={handleInput}
+                error={errors.lastName}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -128,6 +107,7 @@ const Register = () => {
                 name="phone"
                 value={values.phone}
                 handleInput={handleInput}
+                error={errors.phone}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -138,6 +118,7 @@ const Register = () => {
                 name="amount"
                 value={values.amount}
                 handleInput={handleInput}
+                error={errors.amount}
               />
             </Grid>
             <Grid item xs={12}>
@@ -147,6 +128,7 @@ const Register = () => {
                 name="email"
                 value={values.email}
                 handleInput={handleInput}
+                error={errors.email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -156,6 +138,7 @@ const Register = () => {
                 name="confirmEmail"
                 value={values.confirmEmail}
                 handleInput={handleInput}
+                error={errors.confirmEmail}
               />
             </Grid>
             <Grid item xs={12}>
@@ -165,6 +148,7 @@ const Register = () => {
                 name="password"
                 value={values.password}
                 handleInput={handleInput}
+                error={errors.password}
               />
             </Grid>
             <Grid item xs={12}>
@@ -174,6 +158,7 @@ const Register = () => {
                 name="confirmPassword"
                 value={values.confirmPassword}
                 handleInput={handleInput}
+                error={errors.confirmPassword}
               />
             </Grid>
             <Grid item xs={12}>
@@ -182,6 +167,7 @@ const Register = () => {
                 name="terms"
                 className={classes.label}
                 handleCheckbox={handleInput}
+                error={errors.terms}
                 label={
                   <Typography>
                     I certify that I am 18 years of age or older, and I agree to

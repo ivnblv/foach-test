@@ -8,7 +8,8 @@ const FormSelect = ({
   className,
   value,
   name,
-  handleInput
+  handleInput,
+  error
 }) => (
   <TextField
     name={name}
@@ -19,6 +20,8 @@ const FormSelect = ({
     label={label}
     select
     fullWidth
+    error={!!error}
+    helperText={error}
   >
     {options.map(option => (
       <MenuItem value={option}>{option}</MenuItem>
