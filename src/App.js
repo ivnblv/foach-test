@@ -34,7 +34,7 @@ const App = () => {
         >
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
               <Switch>
                 <Route exact path={"/"} component={Register} />
                 <Route exact path={"/app"} component={Users} />
