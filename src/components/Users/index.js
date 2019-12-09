@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { switchUserVacation } from "../../store/actions/userActions";
-import User from "../User/User";
+import User from "../User";
 import { Grid } from "@material-ui/core";
 
 const Users = () => {
@@ -14,8 +14,8 @@ const Users = () => {
 
   return (
     <Grid container justify="center" style={{ overflowX: "hidden" }}>
-      {Object.keys(users).map(user => (
-        <Grid item sm={12}>
+      {Object.keys(users).map((user, i) => (
+        <Grid item sm={12} key={`user${i}`}>
           <User
             id={users[user].id}
             name={users[user].name}

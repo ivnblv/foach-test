@@ -14,7 +14,6 @@ const styles = makeStyles({
     maxWidth: 1024,
     margin: "auto",
     minHeight: "inherit"
-    // display: "flex"
   }
 });
 

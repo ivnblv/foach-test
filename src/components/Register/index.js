@@ -4,8 +4,10 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import FormInput from "../formElements/FormInput";
 import FormCheckbox from "../formElements/FormCheckbox";
 import FormSelect from "../formElements/FormSelect";
+import { withRouter } from "react-router-dom";
 import styles from "./styles";
 import { validate } from "../../utility/validation";
+import FormPassword from "../formElements/FormPassword";
 
 const registerTheme = theme =>
   createMuiTheme({
@@ -27,7 +29,7 @@ const registerTheme = theme =>
     }
   });
 
-const Register = () => {
+const Register = ({ history }) => {
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -43,11 +45,11 @@ const Register = () => {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [errors, setErrors] = useState({});
 
-  //   useEffect(() => {
-  //     Object.values(values).includes("") || values.terms == false
-  //       ? setSubmitDisabled(true)
-  //       : setSubmitDisabled(false);
-  //   }, [values]);
+  useEffect(() => {
+    Object.values(values).includes("") || values.terms === false
+      ? setSubmitDisabled(true)
+      : setSubmitDisabled(false);
+  }, [values]);
 
   const handleInput = ({ target: { name, value } }, type) => {
     switch (type) {
@@ -69,7 +71,7 @@ const Register = () => {
       ["phone", "email", "confirmEmail", "password", "confirmPassword"]
     );
     if (Object.keys(result).length === 0) {
-      console.log("profit");
+      history.push("app");
     } else setErrors(result);
   };
 
@@ -79,7 +81,7 @@ const Register = () => {
       <Box className={classes.container} p="2rem 2rem 3rem 2rem">
         <Typography className={classes.title}>Sign up</Typography>
         <form className={classes.form} onSubmit={submit}>
-          <Grid container spacing={2} justify="center">
+          <Grid container spacing={3} justify="center">
             <Grid item sm={6} xs={12}>
               <FormInput
                 label="First Name"
@@ -142,23 +144,25 @@ const Register = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormInput
+              <FormPassword
                 label="Password"
                 className={classes.input}
                 name="password"
                 value={values.password}
                 handleInput={handleInput}
                 error={errors.password}
+                type="password"
               />
             </Grid>
             <Grid item xs={12}>
-              <FormInput
+              <FormPassword
                 label="Confirm Password"
                 className={classes.input}
                 name="confirmPassword"
                 value={values.confirmPassword}
                 handleInput={handleInput}
                 error={errors.confirmPassword}
+                type="password"
               />
             </Grid>
             <Grid item xs={12}>
@@ -169,18 +173,18 @@ const Register = () => {
                 handleCheckbox={handleInput}
                 error={errors.terms}
                 label={
-                  <Typography>
+                  <Box>
                     I certify that I am 18 years of age or older, and I agree to
-                    the{" "}
-                    <span>
-                      <Link href="#"> Terms of Service</Link>
-                    </span>{" "}
+                    the
+                    <Link href="#" className={classes.inlineLink}>
+                      Terms of Service
+                    </Link>
                     and
-                    <span>
-                      <Link href="#"> Privacy Policy</Link>
-                    </span>
+                    <Link href="#" className={classes.inlineLink}>
+                      Privacy Policy
+                    </Link>
                     .
-                  </Typography>
+                  </Box>
                 }
               />
             </Grid>
@@ -218,4 +222,4 @@ const Register = () => {
     </ThemeProvider>
   );
 };
-export default Register;
+export default withRouter(Register);

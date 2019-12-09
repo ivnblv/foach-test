@@ -22,7 +22,7 @@ const errorMessages = {
   },
   confirmEmail: {
     "0": "Confirm email address",
-    noMatch: "Email address must match"
+    noMatch: "Email addresses must match"
   },
   password: {
     "0": "Password is required",
@@ -62,10 +62,12 @@ export const validate = (values, dontValidate, specialValidation) => {
           errors[key] = errorMessages[key].long;
           break;
         }
+        break;
       case "boolean":
         if (values[key] === false) {
           errors[key] = errorMessages[key]["0"];
         }
+        break;
       default:
         break;
     }
@@ -98,10 +100,11 @@ export const validate = (values, dontValidate, specialValidation) => {
         if (values[key].length === 0) {
           errors[key] = errorMessages[key][0];
           break;
-        } else if (values[key] == values.email) break;
+        } else if (values[key] === values.email) break;
         else {
           errors[key] = errorMessages[key].noMatch;
         }
+        break;
       case "password":
         if (values[key].length === 0) {
           errors[key] = errorMessages[key][0];
@@ -110,6 +113,7 @@ export const validate = (values, dontValidate, specialValidation) => {
           errors[key] = errorMessages[key].short;
           break;
         }
+        break;
       case "confirmPassword":
         if (values[key].length === 0) {
           errors[key] = errorMessages[key][0];
@@ -118,6 +122,9 @@ export const validate = (values, dontValidate, specialValidation) => {
           errors[key] = errorMessages[key].noMatch;
           break;
         }
+        break;
+      default:
+        break;
     }
   });
 

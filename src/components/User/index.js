@@ -28,6 +28,7 @@ const userTheme = theme =>
       ...theme.palette
     },
     overrides: {
+      ...theme.overrides,
       MuiSwitch: {
         switchBase: {
           color: "#979797",

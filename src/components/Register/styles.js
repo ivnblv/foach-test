@@ -13,6 +13,9 @@ const styles = makeStyles({
     fontStyle: "normal",
     marginBottom: "1rem"
   },
+  inlineLink: {
+    margin: "0 .3rem"
+  },
   button: {
     fontSize: 14,
     letterSpacing: "3px",
@@ -23,15 +26,12 @@ const styles = makeStyles({
     color: "#fff"
   },
   input: {
-    lineHeight: "17px"
+    lineHeight: "17px",
+    fontSize: 14
   },
   label: {
     lineHeight: "20px",
     color: "#212322"
-  },
-  error: {
-    position: "absolute",
-    bottom: "-0.9rem"
   }
 });
 

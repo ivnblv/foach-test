@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import "typeface-lato";
-import { isAbsolute } from "path";
+import "typeface-playfair-display";
 
 const theme = createMuiTheme({
   typography: {
@@ -11,9 +11,14 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiFormHelperText: {
-      error: {
-        position: isAbsolute,
-        bottom: "-0.9rem"
+      root: {
+        "&$error": {
+          maxWidth: "65%",
+          position: "absolute",
+          bottom: "-0.9rem",
+          backgroundColor: "#fff",
+          paddingLeft: ".3rem"
+        }
       }
     }
   }

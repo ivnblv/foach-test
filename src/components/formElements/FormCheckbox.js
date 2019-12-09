@@ -2,31 +2,19 @@ import React from "react";
 import {
   FormControl,
   FormControlLabel,
-  Typography,
   Checkbox,
   FormHelperText
 } from "@material-ui/core";
 
-const FormCheckbox = ({
-  name,
-  value,
-  label,
-  className,
-  handleCheckbox,
-  error
-}) => (
+const FormCheckbox = ({ name, value, label, handleCheckbox, error }) => (
   <FormControl error={!!error}>
     <FormControlLabel
       name={name}
       onChange={e => handleCheckbox(e, "bool")}
       control={<Checkbox value={value} color="primary" />}
-      label={<Typography className={className}>{label}</Typography>}
+      label={label}
     />
-    {error ? (
-      <FormHelperText style={{ position: "absolute", bottom: "-0.9rem" }}>
-        {error}
-      </FormHelperText>
-    ) : null}
+    {error ? <FormHelperText>{error}</FormHelperText> : null}
   </FormControl>
 );
 

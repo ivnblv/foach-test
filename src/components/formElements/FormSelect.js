@@ -15,6 +15,7 @@ const FormSelect = ({
     name={name}
     value={value}
     className={className}
+    InputProps={{ className }}
     onChange={e => handleInput(e, "text")}
     variant="outlined"
     label={label}
@@ -24,7 +25,9 @@ const FormSelect = ({
     helperText={error}
   >
     {options.map(option => (
-      <MenuItem value={option}>{option}</MenuItem>
+      <MenuItem key={options} value={option}>
+        {option}
+      </MenuItem>
     ))}
   </TextField>
 );
